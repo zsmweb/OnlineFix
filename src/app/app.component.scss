@@ -18,7 +18,6 @@ body {
   }
 
   .demo-content {
-    padding: 32px;
     box-sizing: border-box;
   }
 
@@ -42,6 +41,6 @@ body {
 // stretch to screen size in fullscreen mode
 .demo-content {
   width: 100%;
-  height: 100%;
+  height: inherit;
   box-sizing: border-box;
 }
