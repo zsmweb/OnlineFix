@@ -1,3 +1,39 @@
-<h1>
-  {{title}}
-</h1>
+<md-sidenav-container class="demo-root" fullscreen>
+  <md-sidenav #start mode="push">
+    <md-nav-list>
+      <a *ngFor="let navItem of navItems"
+         md-list-item
+         (click)="start.close()">
+        {{navItem.name}}
+      </a>
+
+      <hr>
+
+      <a md-list-item
+         (click)="start.close()">
+        Baseline
+      </a>
+    </md-nav-list>
+    <button md-button (click)="start.close()">CLOSE</button>
+  </md-sidenav>
+  <div>
+    <md-toolbar color="primary">
+      <button md-icon-button (click)="start.open()">
+        <md-icon class="md-24" >menu</md-icon>
+      </button>
+      <div class="demo-toolbar">
+        <h1>在线冲突解决</h1>
+        <button md-button (click)="dark = !dark">{{dark ? 'Light' : 'Dark'}} theme</button>
+        <button md-button (click)="toggleFullscreen()" title="Toggle fullscreen">
+          全屏
+        </button>
+        <button md-button (click)="root.dir = (root.dir == 'rtl' ? 'ltr' : 'rtl')" title="Toggle between RTL and LTR">
+          {{root.dir.toUpperCase()}}
+        </button>
+      </div>
+    </md-toolbar>
+
+    <div #root="$implicit" dir="ltr" class="demo-content">
+    </div>
+  </div>
+</md-sidenav-container>
