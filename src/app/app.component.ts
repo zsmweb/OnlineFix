@@ -61,24 +61,45 @@ export class AppComponent implements OnDestroy{
     {label: 'Terminal', link: 'oterminal'},
   ];
   activeLinkIndex = 0;
-  
+
   ngOnDestroy(){
 
   }
+
+  // Dynamic tabs demo
+  activeTabIndex = 0;
+  addTabPosition = 0;
+  gotoNewTabAfterAdding = false;
+  createWithLongContent = false;
+  dynamicTabs = [
+    {
+      label: 'Editor',
+      type:1,
+      content: '<editor-content></editor-content>'
+    }, {
+      label: 'Compare',
+      type:2,
+      content: '<compare-content></compare-content>'
+    }, {
+      label: 'Terminal',
+      type:3,
+      content: '<terminal-content></terminal-content>'
+    },
+  ];
   
 }
 
 @Component({
   moduleId: module.id,
-  selector: 'sunny-routed-content',
-  template: 'This is the routed body of the Terminal tab.',
+  selector: 'terminal-content',
+  template: '<gritty-terminal></gritty-terminal>',
 })
 export class TerminalContent {}
 
 
 @Component({
   moduleId: module.id,
-  selector: 'rainy-routed-content',
+  selector: 'compare-content',
   template: 'This is the routed body of the Compare tab.',
 })
 export class CompareContent {}
@@ -86,9 +107,10 @@ export class CompareContent {}
 
 @Component({
   moduleId: module.id,
-  selector: 'foggy-routed-content',
+  selector: 'editor-content',
   template: '<monaco-editor [(ngModel)]="code" [language]="language" [language_defaults]="language_defaults" [options]="monaco_options"></monaco-editor>',
 })
+
 export class EditorContent implements OnDestroy {
   code: string = 'function x() {\nconsole.log("Hello world!");\n}';
   language: string = 'javascript';

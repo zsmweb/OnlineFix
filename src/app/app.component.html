@@ -35,14 +35,29 @@
       </div>
     </md-toolbar>
 
-    <div #root="$implicit" dir="ltr" style="height:inherit;width:auto" class="demo-content">
-      <nav md-tab-nav-bar aria-label="weather navigation links">
+    <div #root="$implicit" dir="ltr" style="height:80%;width:auto" class="demo-content">
+      <!--<nav md-tab-nav-bar aria-label="weather navigation links">
         <a md-tab-link *ngFor="let tabLink of tabLinks; let i = index" [routerLink]="tabLink.link" [active]="activeLinkIndex === i"
           (click)="activeLinkIndex = i">
-      {{tabLink.label}}  
-    </a>
+          {{tabLink.label}}  
+        </a>
       </nav>
-      <router-outlet></router-outlet>
+      <router-outlet></router-outlet>-->
+      <md-tab-group class="demo-tab-group" dynamicHeight [(selectedIndex)]="activeTabIndex">
+        <md-tab *ngFor="let tab of dynamicTabs" [disabled]="tab.disabled">
+          <ng-template md-tab-label>{{tab.label}}</ng-template>
+          <div class="tab-content">
+            <br/>
+            <md-input-container>
+              <input mdInput placeholder="Tab Label" [(ngModel)]="tab.label">
+            </md-input-container>
+            <br><br>
+            <button md-raised-button [disabled]="dynamicTabs.length == 1" (click)="deleteTab(tab)">
+          Delete Tab
+        </button>
+          </div>
+        </md-tab>
+      </md-tab-group>
     </div>
   </div>
 </md-sidenav-container>

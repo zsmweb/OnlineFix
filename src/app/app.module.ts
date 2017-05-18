@@ -13,11 +13,13 @@ import {RouterModule} from '@angular/router';
 import { AppComponent,EditorContent, CompareContent, TerminalContent } from './app.component';
 import {TABS_DEMO_ROUTES} from './app.router';
 
+import { GrittyTerminalComponent } from './gritty/gritty.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     MonacoEditorComponent,
+    GrittyTerminalComponent,
     EditorContent, CompareContent, TerminalContent
   ],
   imports: [
